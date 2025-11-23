@@ -14,7 +14,8 @@
     "next.config.js",
     ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"],
+  "paths": {
+    "@payload-config": ["./payload.config.ts"]
+  }
 }
