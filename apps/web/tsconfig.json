@@ -5,7 +5,11 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "@payload-config": ["./payload.config.ts"],
+      "@/*": ["./*"]
+    }
   },
   "include": [
     "**/*.ts",
@@ -14,8 +18,5 @@
     "next.config.js",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"],
-  "paths": {
-    "@payload-config": ["./payload.config.ts"]
-  }
+  "exclude": ["node_modules"]
 }
