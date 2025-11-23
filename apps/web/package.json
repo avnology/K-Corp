@@ -17,6 +17,7 @@
     "@repo/ui": "workspace:*",
     "@tailwindcss/postcss": "^4.1.17",
     "graphql": "^16.12.0",
+    "gsap": "^3.13.0",
     "next": "^16.0.1",
     "payload": "^3.64.0",
     "postcss": "^8.5.6",
