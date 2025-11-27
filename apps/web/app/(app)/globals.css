@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-family-alexandria: "Alexandria", sans-serif;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -49,10 +54,4 @@ a {
   .imgDark {
     display: unset;
   }
-}
-
-.alexandria {
-  font-family: "Alexandria", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
 }
