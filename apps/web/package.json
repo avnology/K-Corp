@@ -14,6 +14,7 @@
     "@payloadcms/db-mongodb": "^3.64.0",
     "@payloadcms/next": "^3.64.0",
     "@payloadcms/richtext-lexical": "^3.64.0",
+    "@radix-ui/react-separator": "^1.1.8",
     "@radix-ui/react-slot": "^1.2.4",
     "@repo/ui": "workspace:*",
     "@tailwindcss/postcss": "^4.1.17",
