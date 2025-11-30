@@ -13,12 +13,11 @@ export const HomePage = () => {
       <TitleContainer title="K.Corp A Trusted " />
 
       <AboutUs />
-      <Companies />
-      <TitleContainer title="Contact us" />
-      <ContactUs />
       <div className="h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16" />
       <RotatingLinks />
       <div className="h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16" />
+      <Companies />
+      <TitleContainer title="Contact us" />
       <ContactUs />
     </main>
   );
