@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React, { useEffect, useRef } from 'react';
-import { Button } from '../../components/ui/button';
-import { gsap } from 'gsap';
+import React, { useEffect, useRef } from "react";
+import { Button } from "../../components/ui/button";
+import { gsap } from "gsap";
 
 export const Hero = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -13,7 +13,7 @@ export const Hero = () => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         defaults: {
-          ease: 'back.out(1.7)',
+          ease: "back.out(1.7)",
         },
       });
 
@@ -23,7 +23,7 @@ export const Hero = () => {
         rotation: -5,
         y: 50,
         duration: 1.2,
-        ease: 'elastic.out(1, 0.6)',
+        ease: "elastic.out(1, 0.6)",
       });
 
       tl.from(
@@ -34,9 +34,9 @@ export const Hero = () => {
           y: 30,
           rotation: 3,
           duration: 1,
-          ease: 'back.out(2)',
+          ease: "back.out(2)",
         },
-        '-=0.6'
+        "-=0.6"
       );
 
       tl.from(
@@ -47,28 +47,28 @@ export const Hero = () => {
           y: 20,
           rotation: -3,
           duration: 0.8,
-          ease: 'elastic.out(1, 0.5)',
+          ease: "elastic.out(1, 0.5)",
         },
-        '-=0.5'
+        "-=0.5"
       );
 
       const button = buttonRef.current;
       if (button) {
-        button.addEventListener('mouseenter', () => {
+        button.addEventListener("mouseenter", () => {
           gsap.to(button, {
             scale: 1.1,
             rotation: 2,
             duration: 0.3,
-            ease: 'power2.out',
+            ease: "power2.out",
           });
         });
 
-        button.addEventListener('mouseleave', () => {
+        button.addEventListener("mouseleave", () => {
           gsap.to(button, {
             scale: 1,
             rotation: 0,
             duration: 0.3,
-            ease: 'power2.out',
+            ease: "power2.out",
           });
         });
       }
@@ -104,13 +104,13 @@ export const Hero = () => {
           ref={descriptionRef}
           className="alexandria text-center font-light text-white max-w-full sm:max-w-[90%] md:max-w-[85%] lg:max-w-[1000px] xl:max-w-[1210px] 2xl:max-w-[1400px] text-sm sm:text-base md:text-lg lg:text-xl xl:text-[20px] 2xl:text-[22px] 4xl:text-[26px] leading-relaxed sm:leading-relaxed md:leading-[25px] lg:leading-[25px] xl:leading-[25px] 2xl:leading-[28px] 4xl:leading-[32px]"
         >
-          This text is an example of text that can be replaced in the same space, this text has been generated from the Arabic text generator, where you can generate such text
+          This text is an example of text that can be replaced in the same
+          space, this text has been generated from the Arabic text generator,
+          where you can generate such text
         </p>
 
         <div ref={buttonRef}>
-          <Button variant="transparent">
-            Contact Us
-          </Button>
+          <Button variant="transparent">Contact Us</Button>
         </div>
       </div>
     </section>

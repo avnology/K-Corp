@@ -13,7 +13,7 @@ export default function TitleContainer({ title }: { title: string }) {
 
   return (
     <div className="w-full bg-[#002569] border-y-2 border-white text-white overflow-hidden relative">
-      <div className="w-full border-b border-white py-2 flex items-center justify-between px-6 text-[10px] opacity-70 tracking-widest">
+      <div className="w-full border-b border-white py-2 flex items-center justify-between px-6 text-[5px] md:text-[10px] opacity-70 tracking-widest">
         <span>►</span>
         {Array.from({ length: 8 }).map((_, i) => (
           <span className="flex items-center gap-4" key={i}>
@@ -22,11 +22,13 @@ export default function TitleContainer({ title }: { title: string }) {
         ))}
       </div>
 
-      <div className="w-full flex justify-center items-center py-16">
-        <p className="text-[165px] l font-extrabold uppercase">{title}</p>
+      <div className="w-full flex justify-center text-center items-center py-16">
+        <p className="xl:text-[140px] md:text-[110px] text-[60px] sm:text-[70px] 2xl:text-[165px] l font-extrabold uppercase">
+          {title}
+        </p>
       </div>
 
-      <div className="w-full border-t border-white py-2 flex items-center justify-between px-6 text-[10px] opacity-70 tracking-widest">
+      <div className="w-full border-t border-white py-2 flex items-center justify-between px-6 text-[5px] md:text-[10px] opacity-70 tracking-widest">
         <span>►</span>
         {Array.from({ length: 5 }).map((_, i) => (
           <span className="flex items-center gap-4" key={i}>
