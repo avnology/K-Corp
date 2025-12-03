@@ -41,7 +41,7 @@ export default function Partners() {
   const mobileSlides = groupPartnersIntoSlides(partners, 3);
 
   return (
-    <section className="w-full max-lg:px-5! bg-[#002569]">
+    <section className="w-full max-lg:px-5! px-4! bg-[#002569]">
       <div className="py-24! container mx-auto!">
         <h2
           className="text-white w-fit font-light md:text-[50px] text-[35px] lg:text-[60px] leading-[48.8px] mb-4!"
@@ -82,11 +82,11 @@ export default function Partners() {
             <CarouselContent>
               {desktopSlides.map((slide, slideIndex) => (
                 <CarouselItem key={slideIndex}>
-                  <div className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8">
+                  <div className="grid grid-cols-5 gap-4 md:gap-6 lg:gap-8">
                     {slide.map((partner: Partner) => (
                       <div
                         key={partner.id}
-                        className="partner-box flex items-center justify-center bg-transparent border border-white w-[200px] md:w-[220px] lg:w-[240px] h-[135px] md:h-[147px] lg:h-[160px]"
+                        className="partner-box flex items-center justify-center bg-transparent border border-white w-full h-[135px] md:h-[147px] lg:h-[160px]"
                       >
                         <div className="text-white text-center">
                           <span className="text-sm font-light">
@@ -139,7 +139,7 @@ export default function Partners() {
               ))}
             </CarouselContent>
 
-            <CarouselDots  style={{ marginTop: "20px" }}  />
+            <CarouselDots style={{ marginTop: "20px" }} />
           </Carousel>
         </div>
       </div>
