@@ -1,14 +1,17 @@
 import React from "react";
 import { Hero } from "../components/Hero";
-import { RotatingLinks } from '../components/links';
+import { RotatingLinks } from "../components/links";
 import ContactUs from "../components/contact-us";
 import AboutUs from "../components/about-us";
 import Companies from "../components/Companies";
 import TitleContainer from "@/modules/components/common/TitleContainer";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 export const HomePage = () => {
   return (
     <main className="w-full">
+      <NavBar />
       <Hero />
       <TitleContainer title="K.Corp A Trusted " />
 
@@ -19,6 +22,7 @@ export const HomePage = () => {
       <Companies />
       <TitleContainer title="Contact us" />
       <ContactUs />
+      <Footer />
     </main>
   );
 };

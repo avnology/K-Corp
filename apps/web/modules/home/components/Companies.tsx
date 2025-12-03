@@ -112,7 +112,7 @@ export default function Companies() {
       </div>
 
       <div
-        className="2xl:h-[918px] h-[300px] max-md:w-[100px]  md:h-[700px] absolute top-1/2 p-2! -translate-y-1/2 left-1/2 -translate-x-1/2 max-w-[250px] aspect-918/150 rounded-t-full rounded-b-full border outline outline-white border-white flex items-center justify-center z-20"
+        className="2xl:h-[818px] h-[300px] max-md:w-[100px]  md:h-[600px] absolute top-1/2 p-2! -translate-y-1/2 left-1/2 -translate-x-1/2 max-w-[250px] aspect-918/150 rounded-t-full rounded-b-full border outline outline-white border-white flex items-center justify-center z-20"
         id="companies"
       >
         <div className="relative w-full h-full border border-white rounded-t-full rounded-b-full">
@@ -134,7 +134,7 @@ export default function Companies() {
             {"COMPANIES".split("").map((letter, index) => (
               <span
                 key={index}
-                className="text-[30px] text-white md:text-[70px] 2xl:text-[100px] font-bold leading-none"
+                className="text-[30px] text-white md:text-[50px] 2xl:text-[80px] font-bold leading-none"
               >
                 {letter}
               </span>
@@ -147,7 +147,7 @@ export default function Companies() {
         <div className="flex gap-32 content-track">
           <div className="content-item flex flex-col items-center">
             <ImageOverLay />
-            <p className="text-white text-center text-[33px] font-extralight ">
+            <p className="text-white text-center text-[8px] md:text-[18px] xl:text-[33px] font-extralight ">
               From infrastructure to entertainment, we collaborate, invest, and
               transform industries for tomorrow.
             </p>
@@ -155,7 +155,7 @@ export default function Companies() {
 
           <div className="content-item flex flex-col items-center">
             <ImageOverLay />
-            <p className="text-white text-center text-[33px] font-extralight ">
+            <p className="text-white text-center  text-[8px] md:text-[18px] xl:text-[33px] font-extralight ">
               From infrastructure to entertainment, we collaborate, invest, and
               transform industries for tomorrow.
             </p>

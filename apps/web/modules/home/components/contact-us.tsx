@@ -27,7 +27,6 @@ const ContactUs = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Show loading toast
     const loadingToast = toast.loading("Sending your message...", {
       description: "Please wait while we process your request",
     });
