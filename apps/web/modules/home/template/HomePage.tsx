@@ -7,7 +7,7 @@ import Companies from "../components/Companies";
 import TitleContainer from "@/modules/components/common/TitleContainer";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-
+import Partners from "../components/partners";
 export const HomePage = () => {
   return (
     <main className="w-full">
@@ -20,6 +20,7 @@ export const HomePage = () => {
       <RotatingLinks />
       <div className="h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16" />
       <Companies />
+      <Partners />
       <TitleContainer title="Contact us" />
       <ContactUs />
       <Footer />
