@@ -10,11 +10,11 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="w-full  bg-[#002569] md:min-h-[10rem] text-white py-12! ">
+    <footer className="w-full  px-4! bg-[#002569] md:min-h-[10rem] text-white py-12! ">
       <div className=" container mx-auto! flex flex-col justify-center items-center  gap-6">
         <div className="flex flex-col md:flex-row w-full items-center justify-between">
           {" "}
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <Image
               height={40}
               width={160}

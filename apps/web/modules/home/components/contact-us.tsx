@@ -64,7 +64,7 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="w-full max-lg:px-5!  bg-[#002569]">
+    <section className="w-full max-lg:px-5! px-4!  bg-[#002569]">
       <div className="py-24! container mx-auto!">
         <h2 className="font-alexandria w-fit font-light md:text-[50px] text-[35px] lg:text-[60px] leading-[48.8px] text-white mb-4!">
           Reach Out to Us
