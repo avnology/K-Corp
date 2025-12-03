@@ -75,20 +75,20 @@ a {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
 .scrolling-links-container {
   width: 100%;
   overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .scrolling-links-content {
-  display: flex;
-  gap: 4rem;
-  animation: scroll-left 10s linear infinite;
-  -webkit-animation: scroll-left 10s linear infinite;
+  animation: scroll-left 20s linear infinite;
+  -webkit-animation: scroll-left 20s linear infinite;
 }
 
 .scrolling-links-container:hover .scrolling-links-content {

@@ -17,72 +17,78 @@ const links: LinkItem[] = [
 
 export const RotatingLinks = () => {
   return (
-    <section className="relative w-full h-[99px] sm:h-[99px] md:h-[99px] lg:h-[99px] xl:h-[99px] 2xl:h-[99px] 4xl:h-[99px] bg-[#03235D] overflow-visible flex items-center justify-center">
-      <div className="absolute -top-[25px] -right-[125px] w-auto h-auto pointer-events-none z-10">
+    <section className="relative w-full h-[60px] md:h-[80px] lg:h-[99px] bg-[#03235D] overflow-visible flex items-center justify-center">
+      
+      <div className="absolute -top-[15px] md:-top-[25px] -right-[60px] md:-right-[125px] w-auto h-auto pointer-events-none z-10">
         <Image
           src="/home/Rectangle1.svg"
           alt="Decoration"
           width={249}
           height={49}
+          className="w-[150px] md:w-[249px]" 
         />
       </div>
 
-      <div className="absolute -bottom-[25px] -left-[125px] w-auto h-auto pointer-events-none z-10">
+      <div className="absolute -bottom-[15px] md:-bottom-[25px] -left-[60px] md:-left-[125px] w-auto h-auto pointer-events-none z-10">
         <Image
           src="/home/Rectangle2 svg.svg"
           alt="Decoration"
           width={249}
           height={49}
+          className="w-[150px] md:w-[249px]"
         />
-      </div> 
+      </div>
 
       <div className="relative w-full h-full flex items-center">
-        <div className="scrolling-links-container group">
-          <div className="scrolling-links-content">
-            <div className="flex items-center gap-16 whitespace-nowrap h-full">
+        <div className="scrolling-links-container">
+          <div className="flex items-center gap-8 md:gap-12 lg:gap-16">
+            
+            <div className="scrolling-links-content flex shrink-0 items-center justify-around gap-8 md:gap-12 lg:gap-16 min-w-full">
               {links.map((link, index) => (
                 <a
                   key={`first-${index}`}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-transform duration-300 hover:scale-110"
+                  className="flex items-center gap-2 md:gap-3 lg:gap-4 transition-transform duration-300 hover:scale-110"
                 >
                   <Image
                     src="/home/send.svg"
                     alt="Send icon"
                     width={40}
                     height={40}
-                    className="w-10 h-10 "
+                    className="w-5 h-5 md:w-8 md:h-8 lg:w-10 lg:h-10"
                   />
-                  <span className="audiowide-regular text-white text-[45px] leading-[64px] uppercase">
+                  <span className="audiowide-regular text-white text-[20px] md:text-[30px] lg:text-[45px] leading-tight lg:leading-[64px] uppercase">
                     {link.text}
                   </span>
                 </a>
               ))}
             </div>
-            <div className="flex items-center gap-16 whitespace-nowrap">
+
+            <div className="scrolling-links-content flex shrink-0 items-center justify-around gap-8 md:gap-12 lg:gap-16 min-w-full" aria-hidden="true">
               {links.map((link, index) => (
                 <a
                   key={`second-${index}`}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 transition-transform duration-300 hover:scale-110"
+                  className="flex items-center gap-2 md:gap-3 lg:gap-4 transition-transform duration-300 hover:scale-110"
                 >
                   <Image
                     src="/home/send.svg"
                     alt="Send icon"
                     width={40}
                     height={40}
-                    className="w-10 h-10 rotate-180"
+                    className="w-5 h-5 md:w-8 md:h-8 lg:w-10 lg:h-10" 
                   />
-                  <span className="audiowide-regular text-white text-[45px] leading-[64px] uppercase">
+                  <span className="audiowide-regular text-white text-[20px] md:text-[30px] lg:text-[45px] leading-tight lg:leading-[64px] uppercase">
                     {link.text}
                   </span>
                 </a>
               ))}
             </div>
+
           </div>
         </div>
       </div>
