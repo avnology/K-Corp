@@ -112,7 +112,7 @@ export default function Companies() {
       </div>
 
       <div
-        className="2xl:h-[818px] h-[300px] max-md:w-[100px]  md:h-[600px] absolute top-1/2 p-2! -translate-y-1/2 left-1/2 -translate-x-1/2 max-w-[250px] aspect-918/150 rounded-t-full rounded-b-full border outline outline-white border-white flex items-center justify-center z-20"
+        className="2xl:h-[80vh] h-[40vh] max-md:w-[100px]  md:h-[70vh] absolute top-1/2 p-2! -translate-y-1/2 left-1/2 -translate-x-1/2 max-w-[250px] aspect-918/150 rounded-t-full rounded-b-full border outline outline-white border-white flex items-center justify-center z-20"
         id="companies"
       >
         <div className="relative w-full h-full border border-white rounded-t-full rounded-b-full">
@@ -134,7 +134,7 @@ export default function Companies() {
             {"COMPANIES".split("").map((letter, index) => (
               <span
                 key={index}
-                className="text-[30px] text-white md:text-[50px] 2xl:text-[80px] font-bold leading-none"
+                className="text-[4vh] text-white md:text-[7vh] 2xl:text-[8vh] font-bold leading-none"
               >
                 {letter}
               </span>
