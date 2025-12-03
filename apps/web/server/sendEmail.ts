@@ -1,12 +1,12 @@
-'use server'
+"use server";
 
-import { createSafeActionClient } from 'next-safe-action'
-import nodemailer, { type TransportOptions } from 'nodemailer'
-import { getPayload } from 'payload'
-import { z } from 'zod'
-import config from '@/payload.config'
+import { createSafeActionClient } from "next-safe-action";
+import nodemailer, { type TransportOptions } from "nodemailer";
+import { getPayload } from "payload";
+import { z } from "zod";
+import config from "@/payload.config";
 
-const actionClient = createSafeActionClient()
+const actionClient = createSafeActionClient();
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -16,37 +16,38 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASSWORD,
   },
-  tls: process.env.NODE_ENV === 'development' ? { rejectUnauthorized: false } : undefined,
-} as TransportOptions)
+  tls:
+    process.env.NODE_ENV === "development"
+      ? { rejectUnauthorized: false }
+      : undefined,
+} as TransportOptions);
 
 const schema = z.object({
   name: z.string().min(2).max(100),
   email: z.string().email(),
   message: z.string().min(10).max(1000),
-})
+});
 
 export const sendEmail = actionClient
   .schema(schema)
   .action(async ({ parsedInput: { name, email, message } }) => {
     try {
-      // Save to database
-      const payload = await getPayload({ config: await config })
+      const payload = await getPayload({ config: await config });
 
       await payload.create({
-        collection: 'messages',
+        collection: "messages",
         data: {
           name,
           email,
           message,
         },
-      })
+      });
 
-      // Send email
       await transporter.sendMail({
         from: process.env.SMTP_FROM_EMAIL,
         to: process.env.SMTP_TO_EMAIL,
-        subject: 'New Contact Message',
-        text: 'You have a new message',
+        subject: "New Contact Message",
+        text: "You have a new message",
         html: `
         <div style="font-family: Arial, sans-serif; background: #f8f9fc; padding: 20px;">
           <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: auto; background: #fff; border-radius: 8px; overflow: hidden;">
@@ -68,7 +69,7 @@ export const sendEmail = actionClient
                   </tr>
                   <tr>
                     <td valign="top"><strong>Message:</strong></td>
-                    <td>${message.replace(/\n/g, '<br>')}</td>
+                    <td>${message.replace(/\n/g, "<br>")}</td>
                   </tr>
                 </table>
               </td>
@@ -81,14 +82,14 @@ export const sendEmail = actionClient
           </table>
         </div>
       `,
-      })
+      });
 
-      return { success: true, message: 'Email sent successfully' }
+      return { success: true, message: "Email sent successfully" };
     } catch (error) {
-      console.error('Error sending email:', error)
+      console.error("Error sending email:", error);
       return {
         success: false,
-        message: 'Failed to send email',
-      }
+        message: "Failed to send email",
+      };
     }
-  })
+  });
