@@ -4,7 +4,19 @@ import React, { useEffect, useRef } from "react";
 import { Button } from "../../components/ui/button";
 import { gsap } from "gsap";
 
-export const Hero = () => {
+interface HeroProps {
+  title?: string;
+  subtitle?: string;
+  buttonText?: string;
+  videoUrl?: string;
+}
+
+export const Hero = ({ 
+  title = "K.CORP BEYOND INVESTMENT",
+  subtitle = "This text is an example of text that can be replaced in the same space, this text has been generated from the Arabic text generator, where you can generate such text",
+  buttonText = "Contact Us",
+  videoUrl = ""
+}: HeroProps) => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -86,7 +98,7 @@ export const Hero = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="/home/hero.mp4" type="video/mp4" />
+        <source src={videoUrl} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -97,20 +109,18 @@ export const Hero = () => {
           ref={titleRef}
           className="alexandria text-center uppercase font-semibold text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[75px] 2xl:text-[85px] 4xl:text-[100px] leading-tight sm:leading-tight md:leading-tight lg:leading-[39px] xl:leading-[39px] 2xl:leading-[45px] 4xl:leading-[55px]"
         >
-          K.CORP BEYOND INVESTMENT
+          {title}
         </h1>
 
         <p
           ref={descriptionRef}
           className="alexandria text-center font-light text-white max-w-full sm:max-w-[90%] md:max-w-[85%] lg:max-w-[1000px] xl:max-w-[1210px] 2xl:max-w-[1400px] text-sm sm:text-base md:text-lg lg:text-xl xl:text-[20px] 2xl:text-[22px] 4xl:text-[26px] leading-relaxed sm:leading-relaxed md:leading-[25px] lg:leading-[25px] xl:leading-[25px] 2xl:leading-[28px] 4xl:leading-[32px]"
         >
-          This text is an example of text that can be replaced in the same
-          space, this text has been generated from the Arabic text generator,
-          where you can generate such text
+          {subtitle}
         </p>
 
         <div ref={buttonRef}>
-          <Button variant="transparent">Contact Us</Button>
+          <Button variant="transparent">{buttonText}</Button>
         </div>
       </div>
     </section>

@@ -3,13 +3,18 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { buildConfig } from "payload";
 import { Messages } from "./collections/Messages";
+import { Media } from "./collections/Media";
+import { Home } from "./globals/home";
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
 
   // Define and configure your collections in this array
-  collections: [Messages],
+  collections: [Messages, Media],
+
+  // Define and configure your globals in this array
+  globals: [Home],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || "",
