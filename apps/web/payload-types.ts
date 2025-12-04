@@ -371,14 +371,30 @@ export interface Home {
       | {
           title: string;
           description: string;
-          link?: {
-            text?: string | null;
-            url?: string | null;
-            openInNewTab?: boolean | null;
-          };
           id?: string | null;
         }[]
       | null;
+  };
+  rotatingLinks: {
+    leftDecoration?: (number | null) | Media;
+    rightDecoration?: (number | null) | Media;
+    icon?: (number | null) | Media;
+    links: {
+      text: string;
+      url: string;
+      openInNewTab?: boolean | null;
+      id?: string | null;
+    }[];
+  };
+  companies: {
+    title: string;
+    titleLink?: string | null;
+    video?: (number | null) | Media;
+    contentSlides: {
+      image?: (number | null) | Media;
+      description: string;
+      id?: string | null;
+    }[];
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -415,13 +431,35 @@ export interface HomeSelect<T extends boolean = true> {
           | {
               title?: T;
               description?: T;
-              link?:
-                | T
-                | {
-                    text?: T;
-                    url?: T;
-                    openInNewTab?: T;
-                  };
+              id?: T;
+            };
+      };
+  rotatingLinks?:
+    | T
+    | {
+        leftDecoration?: T;
+        rightDecoration?: T;
+        icon?: T;
+        links?:
+          | T
+          | {
+              text?: T;
+              url?: T;
+              openInNewTab?: T;
+              id?: T;
+            };
+      };
+  companies?:
+    | T
+    | {
+        title?: T;
+        titleLink?: T;
+        video?: T;
+        contentSlides?:
+          | T
+          | {
+              image?: T;
+              description?: T;
               id?: T;
             };
       };

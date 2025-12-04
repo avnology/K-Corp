@@ -3,9 +3,41 @@ import ImageOverLay from "@/modules/components/common/ImageOverLay";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect } from "react";
+import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Companies() {
+interface MediaType {
+  url?: string | null;
+}
+
+interface ContentSlide {
+  image?: number | MediaType | null;
+  description: string;
+}
+
+interface CompaniesProps {
+  data?: {
+    title?: string | null;
+    titleLink?: string | null;
+    video?: number | MediaType | null;
+    contentSlides?: ContentSlide[] | null;
+  };
+}
+
+const defaultSlides: ContentSlide[] = [
+  {
+    description: "From infrastructure to entertainment, we collaborate, invest, and transform industries for tomorrow.",
+  },
+  {
+    description: "From infrastructure to entertainment, we collaborate, invest, and transform industries for tomorrow.",
+  },
+];
+
+export default function Companies({ data }: CompaniesProps) {
+  const title = data?.title || "COMPANIES";
+  const titleLink = data?.titleLink || "/companies";
+  const videoUrl = typeof data?.video === 'object' && data.video?.url ? data.video.url : "/home/Companies.mp4";
+  const slides = data?.contentSlides && data.contentSlides.length > 0 ? data.contentSlides : defaultSlides;
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -123,15 +155,15 @@ export default function Companies() {
             playsInline
             className="absolute rounded-t-full rounded-b-full  inset-0 w-full h-full object-cover z-0"
           >
-            <source src="/home/Companies.mp4" type="video/mp4" />
+            <source src={videoUrl} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 
           <a
-            href="/companies"
+            href={titleLink}
             className="flex flex-col items-center justify-center text-white hover:text-gray-200 transition-colors relative z-30"
           >
-            {"COMPANIES".split("").map((letter, index) => (
+            {title.split("").map((letter, index) => (
               <span
                 key={index}
                 className="text-[4vh] text-white md:text-[7vh] 2xl:text-[8vh] font-bold leading-none"
@@ -145,21 +177,25 @@ export default function Companies() {
 
       <div className="absolute inset-0 flex items-center justify-center z-20">
         <div className="flex gap-32 content-track">
-          <div className="content-item flex flex-col items-center">
-            <ImageOverLay />
-            <p className="text-white text-center text-[8px] md:text-[18px] xl:text-[33px] font-extralight ">
-              From infrastructure to entertainment, we collaborate, invest, and
-              transform industries for tomorrow.
-            </p>
-          </div>
-
-          <div className="content-item flex flex-col items-center">
-            <ImageOverLay />
-            <p className="text-white text-center  text-[8px] md:text-[18px] xl:text-[33px] font-extralight ">
-              From infrastructure to entertainment, we collaborate, invest, and
-              transform industries for tomorrow.
-            </p>
-          </div>
+          {slides.map((slide, index) => (
+            <div key={index} className="content-item flex flex-col items-center">
+              {typeof slide.image === 'object' && slide.image?.url ? (
+                <div className="relative w-full aspect-video mb-4">
+                  <Image
+                    src={slide.image.url}
+                    alt={`Slide ${index + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ) : (
+                <ImageOverLay />
+              )}
+              <p className="text-white text-center text-[8px] md:text-[18px] xl:text-[33px] font-extralight">
+                {slide.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
 

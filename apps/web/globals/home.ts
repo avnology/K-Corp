@@ -2,6 +2,8 @@ import { GlobalConfig } from 'payload';
 import { hero } from '../fields/hero';
 import { titleContainer } from '../fields/titleContainer';
 import { about } from '../fields/about';
+import { rotatingLinks } from '../fields/rotatingLinks';
+import { companies } from '../fields/companies';
 
 export const Home: GlobalConfig = {
   slug: 'home',
@@ -13,5 +15,7 @@ export const Home: GlobalConfig = {
     hero,
     titleContainer,
     about,
+    rotatingLinks,
+    companies,
   ],
 };

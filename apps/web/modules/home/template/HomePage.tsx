@@ -14,9 +14,11 @@ interface HomePageProps {
   heroData?: Home["hero"];
   titleContainerData?: Home["titleContainer"];
   aboutData?: Home["about"];
+  rotatingLinksData?: Home["rotatingLinks"];
+  companiesData?: Home["companies"];
 }
 
-export const HomePage = ({ heroData, titleContainerData, aboutData }: HomePageProps) => {
+export const HomePage = ({ heroData, titleContainerData, aboutData, rotatingLinksData, companiesData }: HomePageProps) => {
   return (
     <main className="w-full">
       <NavBar />
@@ -30,9 +32,9 @@ export const HomePage = ({ heroData, titleContainerData, aboutData }: HomePagePr
 
       <AboutUs data={aboutData} />
       <div className="h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16" />
-      <RotatingLinks />
+      <RotatingLinks data={rotatingLinksData} />
       <div className="h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16" />
-      <Companies />
+      <Companies data={companiesData} />
       <Partners />
       <TitleContainer title="Contact us" />
       <ContactUs />
