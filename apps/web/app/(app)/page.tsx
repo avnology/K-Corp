@@ -10,5 +10,5 @@ export default async function Home() {
     slug: "home",
   });
 
-  return <HomePage heroData={homeData.hero} titleContainerData={homeData.titleContainer} />;
+  return <HomePage heroData={homeData.hero} titleContainerData={homeData.titleContainer} aboutData={homeData.about} />;
 }

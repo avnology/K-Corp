@@ -360,6 +360,26 @@ export interface Home {
   titleContainer: {
     title: string;
   };
+  about: {
+    title: string;
+    mainDescription: string;
+    buttonText?: string | null;
+    buttonLink?: string | null;
+    secondaryTitle: string;
+    secondaryDescription: string;
+    sections?:
+      | {
+          title: string;
+          description: string;
+          link?: {
+            text?: string | null;
+            url?: string | null;
+            openInNewTab?: boolean | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -380,6 +400,30 @@ export interface HomeSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
+      };
+  about?:
+    | T
+    | {
+        title?: T;
+        mainDescription?: T;
+        buttonText?: T;
+        buttonLink?: T;
+        secondaryTitle?: T;
+        secondaryDescription?: T;
+        sections?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              link?:
+                | T
+                | {
+                    text?: T;
+                    url?: T;
+                    openInNewTab?: T;
+                  };
+              id?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;

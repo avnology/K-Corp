@@ -13,9 +13,10 @@ import type { Home } from "@/payload-types";
 interface HomePageProps {
   heroData?: Home["hero"];
   titleContainerData?: Home["titleContainer"];
+  aboutData?: Home["about"];
 }
 
-export const HomePage = ({ heroData, titleContainerData }: HomePageProps) => {
+export const HomePage = ({ heroData, titleContainerData, aboutData }: HomePageProps) => {
   return (
     <main className="w-full">
       <NavBar />
@@ -27,7 +28,7 @@ export const HomePage = ({ heroData, titleContainerData }: HomePageProps) => {
       />
       <TitleContainer title={titleContainerData?.title || "K.Corp A Trusted"} />
 
-      <AboutUs />
+      <AboutUs data={aboutData} />
       <div className="h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16" />
       <RotatingLinks />
       <div className="h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16" />
