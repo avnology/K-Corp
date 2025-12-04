@@ -17,6 +17,8 @@ export default async function Home() {
       aboutData={homeData.about}
       rotatingLinksData={homeData.rotatingLinks}
       companiesData={homeData.companies}
+      partnersData={homeData.partners}
+      contactData={homeData.contact}
     />
   );
 }

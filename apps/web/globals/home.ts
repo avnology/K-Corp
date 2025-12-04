@@ -4,6 +4,8 @@ import { titleContainer } from '../fields/titleContainer';
 import { about } from '../fields/about';
 import { rotatingLinks } from '../fields/rotatingLinks';
 import { companies } from '../fields/companies';
+import { partners } from '../fields/partners';
+import { contact } from '../fields/contact';
 
 export const Home: GlobalConfig = {
   slug: 'home',
@@ -17,5 +19,7 @@ export const Home: GlobalConfig = {
     about,
     rotatingLinks,
     companies,
+    partners,
+    contact,
   ],
 };

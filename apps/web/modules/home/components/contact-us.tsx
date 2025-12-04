@@ -7,8 +7,15 @@ import { Textarea } from "@/modules/components/ui/textarea";
 import { Button } from "@/modules/components/ui/button";
 import { toast } from "sonner";
 import { sendEmail } from "@/server/sendEmail";
+import type { Home } from "@/payload-types";
 
-const ContactUs = () => {
+interface ContactUsProps {
+  data?: Home["contact"];
+}
+
+const ContactUs = ({ data }: ContactUsProps) => {
+  const title = data?.title || "Reach Out to Us";
+  const description = data?.description || "This text is an example of text that can be replaced in the same space, this text has been generated from the Arabic text generator, where you can generate such text";
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [formData, setFormData] = React.useState({
     name: "",
@@ -67,12 +74,10 @@ const ContactUs = () => {
     <section className="w-full max-lg:px-5! px-4!  bg-primary">
       <div className="py-24! container mx-auto!">
         <h2 className="font-alexandria w-fit font-light md:text-[50px] text-[35px] lg:text-[60px] leading-[48.8px] text-white mb-4!">
-          Reach Out to Us
+          {title}
         </h2>
         <p className="font-alexandria font-light text-[14px] md:text-[20px] leading-[23px] text-[#CFCFCF] mb-12! max-w-[1251px]">
-          This text is an example of text that can be replaced in the same
-          space, this text has been generated from the Arabic text generator,
-          where you can generate such text
+          {description}
         </p>
         <form onSubmit={handleSubmit} className="space-y-6!">
           <div className="space-y-3!">

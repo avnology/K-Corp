@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -8,24 +9,29 @@ import {
   CarouselItem,
   CarouselDots,
 } from "@/modules/components/ui/carousel";
+import type { Home, Media } from "@/payload-types";
 
 interface Partner {
-  id: number;
-  name: string;
-  logo: string;
+  id?: string | number | null;
+  name?: string;
+  logo?: number | Media | null;
 }
 
-const partners: Partner[] = [
-  { id: 1, name: "Partner 1", logo: "/partners/partner1.png" },
-  { id: 2, name: "Partner 2", logo: "/partners/partner2.png" },
-  { id: 3, name: "Partner 3", logo: "/partners/partner3.png" },
-  { id: 4, name: "Partner 4", logo: "/partners/partner4.png" },
-  { id: 5, name: "Partner 5", logo: "/partners/partner5.png" },
-  { id: 6, name: "Partner 6", logo: "/partners/partner6.png" },
-  { id: 7, name: "Partner 7", logo: "/partners/partner7.png" },
-  { id: 8, name: "Partner 8", logo: "/partners/partner8.png" },
-  { id: 9, name: "Partner 9", logo: "/partners/partner9.png" },
-  { id: 10, name: "Partner 10", logo: "/partners/partner10.png" },
+interface PartnersProps {
+  data?: Home["partners"];
+}
+
+const defaultPartners: Partner[] = [
+  { id: "1", name: "Partner 1", logo: null },
+  { id: "2", name: "Partner 2", logo: null },
+  { id: "3", name: "Partner 3", logo: null },
+  { id: "4", name: "Partner 4", logo: null },
+  { id: "5", name: "Partner 5", logo: null },
+  { id: "6", name: "Partner 6", logo: null },
+  { id: "7", name: "Partner 7", logo: null },
+  { id: "8", name: "Partner 8", logo: null },
+  { id: "9", name: "Partner 9", logo: null },
+  { id: "10", name: "Partner 10", logo: null },
 ];
 
 const groupPartnersIntoSlides = (partners: Partner[], perSlide: number) => {
@@ -36,9 +42,21 @@ const groupPartnersIntoSlides = (partners: Partner[], perSlide: number) => {
   return slides;
 };
 
-export default function Partners() {
+export default function Partners({ data }: PartnersProps) {
+  const title = data?.title || "Partners In Success";
+  const description = data?.description || "We don't move alone. Our growth is powered by strategic partnerships with those who share our vision and ambition. Together, we create lasting value and real market impact.";
+  const partners = data?.partnersList || defaultPartners;
+  
   const desktopSlides = groupPartnersIntoSlides(partners, 5);
   const mobileSlides = groupPartnersIntoSlides(partners, 3);
+
+  const getLogoUrl = (logo?: number | Media | null): string | null => {
+    if (!logo) return null;
+    if (typeof logo === 'object' && logo.url) {
+      return logo.url;
+    }
+    return null;
+  };
 
   return (
     <section className="w-full max-lg:px-5! px-4! bg-primary">
@@ -50,7 +68,7 @@ export default function Partners() {
             fontWeight: 300,
           }}
         >
-          Partners In Success
+          {title}
         </h2>
 
         <p
@@ -60,9 +78,7 @@ export default function Partners() {
             fontWeight: 300,
           }}
         >
-          We don&apos;t move alone. Our growth is powered by strategic
-          partnerships with those who share our vision and ambition. Together,
-          we create lasting value and real market impact.
+          {description}
         </p>
 
         <div className="w-full hidden md:block">
@@ -83,18 +99,32 @@ export default function Partners() {
               {desktopSlides.map((slide, slideIndex) => (
                 <CarouselItem key={slideIndex}>
                   <div className="grid grid-cols-5 gap-4 md:gap-6 lg:gap-8">
-                    {slide.map((partner: Partner) => (
-                      <div
-                        key={partner.id}
-                        className="partner-box flex items-center justify-center bg-transparent border border-white w-full h-[135px] md:h-[147px] lg:h-[160px]"
-                      >
-                        <div className="text-white text-center">
-                          <span className="text-sm font-light">
-                            {partner.name}
-                          </span>
+                    {slide.map((partner: Partner) => {
+                      const logoUrl = getLogoUrl(partner.logo);
+                      return (
+                        <div
+                          key={partner.id}
+                          className="partner-box flex items-center justify-center bg-transparent border border-white w-full h-[135px] md:h-[147px] lg:h-[160px] p-4"
+                        >
+                          {logoUrl ? (
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={logoUrl}
+                                alt={partner.name || 'Partner logo'}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                          ) : (
+                            <div className="text-white text-center">
+                              <span className="text-sm font-light">
+                                {partner.name}
+                              </span>
+                            </div>
+                          )}
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </CarouselItem>
               ))}
@@ -122,18 +152,32 @@ export default function Partners() {
               {mobileSlides.map((slide, slideIndex) => (
                 <CarouselItem key={slideIndex}>
                   <div className="flex justify-center gap-2">
-                    {slide.map((partner: Partner) => (
-                      <div
-                        key={partner.id}
-                        className="partner-box flex items-center justify-center bg-transparent border border-white w-[129px] h-[86px]"
-                      >
-                        <div className="text-white text-center">
-                          <span className="text-xs font-light">
-                            {partner.name}
-                          </span>
+                    {slide.map((partner: Partner) => {
+                      const logoUrl = getLogoUrl(partner.logo);
+                      return (
+                        <div
+                          key={partner.id}
+                          className="partner-box flex items-center justify-center bg-transparent border border-white w-[129px] h-[86px] p-3"
+                        >
+                          {logoUrl ? (
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={logoUrl}
+                                alt={partner.name || 'Partner logo'}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                          ) : (
+                            <div className="text-white text-center">
+                              <span className="text-xs font-light">
+                                {partner.name}
+                              </span>
+                            </div>
+                          )}
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </CarouselItem>
               ))}

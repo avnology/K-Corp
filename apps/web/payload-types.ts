@@ -396,6 +396,20 @@ export interface Home {
       id?: string | null;
     }[];
   };
+  partners: {
+    title: string;
+    description: string;
+    partnersList: {
+      name: string;
+      logo?: (number | null) | Media;
+      id?: string | null;
+    }[];
+    titleContainerAfter: string;
+  };
+  contact: {
+    title: string;
+    description: string;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -462,6 +476,26 @@ export interface HomeSelect<T extends boolean = true> {
               description?: T;
               id?: T;
             };
+      };
+  partners?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        partnersList?:
+          | T
+          | {
+              name?: T;
+              logo?: T;
+              id?: T;
+            };
+        titleContainerAfter?: T;
+      };
+  contact?:
+    | T
+    | {
+        title?: T;
+        description?: T;
       };
   updatedAt?: T;
   createdAt?: T;
