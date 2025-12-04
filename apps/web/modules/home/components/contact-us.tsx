@@ -64,7 +64,7 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="w-full max-lg:px-5! px-4!  bg-[#002569]">
+    <section className="w-full max-lg:px-5! px-4!  bg-primary">
       <div className="py-24! container mx-auto!">
         <h2 className="font-alexandria w-fit font-light md:text-[50px] text-[35px] lg:text-[60px] leading-[48.8px] text-white mb-4!">
           Reach Out to Us
@@ -131,7 +131,7 @@ const ContactUs = () => {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-[176px] h-[52px] border border-white rounded-md bg-transparent font-alexandria font-normal text-[16px] leading-[19.5px] text-center text-[#FAFAFF] hover:bg-white hover:text-[#002569] hover:cursor-pointer shadow-[inset_0px_2px_2px_0px_rgba(255,255,255,0.4),inset_0px_-3px_5px_0px_rgba(0,14,15,0.2),0px_1px_1px_0px_rgba(0,10,10,0.5),0px_4px_6px_0px_rgba(0,10,10,0.2)]"
+            className="w-[176px] h-[52px] border border-white rounded-md bg-transparent font-alexandria font-normal text-[16px] leading-[19.5px] text-center text-[#FAFAFF] hover:bg-white hover:text-primary hover:cursor-pointer shadow-[inset_0px_2px_2px_0px_rgba(255,255,255,0.4),inset_0px_-3px_5px_0px_rgba(0,14,15,0.2),0px_1px_1px_0px_rgba(0,10,10,0.5),0px_4px_6px_0px_rgba(0,10,10,0.2)]"
           >
             {isSubmitting ? "Sending..." : "Send a Message"}
           </Button>

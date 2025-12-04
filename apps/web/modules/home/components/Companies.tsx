@@ -99,7 +99,7 @@ export default function Companies() {
   return (
     <div
       id="wrapper"
-      className="bg-[#002569] relative flex flex-col h-screen w-full overflow-hidden"
+      className="bg-primary relative flex flex-col h-screen w-full overflow-hidden"
       style={{ perspective: "1200px" }}
     >
       <div

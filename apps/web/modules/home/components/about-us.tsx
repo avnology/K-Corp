@@ -186,7 +186,7 @@ export default function AboutUs() {
           </p>
         </div>
 
-        <button className="w-full h-[26px]  bg-[#012569] flex items-center justify-center">
+        <button className="w-full h-[26px]  bg-primary flex items-center justify-center">
           <span className="font-alexandria text-[9.94px] leading-6 font-bold uppercase tracking-[1.2px] text-white">
             CONTACT
           </span>

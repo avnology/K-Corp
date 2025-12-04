@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 interface LinkItem {
   text: string;
@@ -9,23 +9,22 @@ interface LinkItem {
 }
 
 const links: LinkItem[] = [
-  { text: 'Green Roots', url: 'https://example.com/green-roots' },
-  { text: 'Shortcut', url: 'https://example.com/shortcut' },
-  { text: 'The Box Group', url: 'https://example.com/the-box-group' },
-  { text: 'WeTransport', url: 'https://example.com/wetransport' },
+  { text: "Green Roots", url: "https://example.com/green-roots" },
+  { text: "Shortcut", url: "https://example.com/shortcut" },
+  { text: "The Box Group", url: "https://example.com/the-box-group" },
+  { text: "WeTransport", url: "https://example.com/wetransport" },
 ];
 
 export const RotatingLinks = () => {
   return (
-    <section className="relative w-full h-[60px] md:h-[80px] lg:h-[99px] bg-[#03235D] overflow-visible flex items-center justify-center">
-      
+    <section className="relative w-full h-[60px] md:h-[80px] lg:h-[99px] bg-primary overflow-visible flex items-center justify-center">
       <div className="absolute -top-[15px] md:-top-[25px] -right-[60px] md:-right-[125px] w-auto h-auto pointer-events-none z-10">
         <Image
           src="/home/Rectangle1.svg"
           alt="Decoration"
           width={249}
           height={49}
-          className="w-[150px] md:w-[249px]" 
+          className="w-[150px] md:w-[249px]"
         />
       </div>
 
@@ -42,7 +41,6 @@ export const RotatingLinks = () => {
       <div className="relative w-full h-full flex items-center">
         <div className="scrolling-links-container">
           <div className="flex items-center gap-8 md:gap-12 lg:gap-16">
-            
             <div className="scrolling-links-content flex shrink-0 items-center justify-around gap-8 md:gap-12 lg:gap-16 min-w-full">
               {links.map((link, index) => (
                 <a
@@ -66,7 +64,10 @@ export const RotatingLinks = () => {
               ))}
             </div>
 
-            <div className="scrolling-links-content flex shrink-0 items-center justify-around gap-8 md:gap-12 lg:gap-16 min-w-full" aria-hidden="true">
+            <div
+              className="scrolling-links-content flex shrink-0 items-center justify-around gap-8 md:gap-12 lg:gap-16 min-w-full"
+              aria-hidden="true"
+            >
               {links.map((link, index) => (
                 <a
                   key={`second-${index}`}
@@ -80,7 +81,7 @@ export const RotatingLinks = () => {
                     alt="Send icon"
                     width={40}
                     height={40}
-                    className="w-5 h-5 md:w-8 md:h-8 lg:w-10 lg:h-10" 
+                    className="w-5 h-5 md:w-8 md:h-8 lg:w-10 lg:h-10"
                   />
                   <span className="audiowide-regular text-white text-[20px] md:text-[30px] lg:text-[45px] leading-tight lg:leading-[64px] uppercase">
                     {link.text}
@@ -88,7 +89,6 @@ export const RotatingLinks = () => {
                 </a>
               ))}
             </div>
-
           </div>
         </div>
       </div>

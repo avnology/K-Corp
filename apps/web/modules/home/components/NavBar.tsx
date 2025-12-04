@@ -1,9 +1,11 @@
 import React from "react";
 import { Contrast, Instagram, Linkedin, Menu } from "lucide-react";
+import NavMenu from "./NavMenu";
+import ColorSwitcher from "./ColorSwitcher";
 
 export default function NavBar() {
   return (
-    <nav className="w-full  bg-[#002569] ps-4! min-h-[97px] text-white flex items-center">
+    <nav className="w-full  bg-primary ps-4! min-h-[97px] text-white flex items-center">
       <div className="flex items-center min-h-full xl:min-w-1/2 ">
         <div className="">
           <img
@@ -30,7 +32,7 @@ export default function NavBar() {
 
         <div className="grid grid-cols-2 max-lg:grid-rows-1 border-y-[0.5] border-y-white max-lg:grid-cols-3 grid-rows-2">
           <span className="row-span-2 flex max-lg:hidden justify-center items-center lg:border-[0.5] border-white col-span-1">
-            <Contrast />
+            <ColorSwitcher />
           </span>
           <span className="row-span-1 border-[0.5] border-white lg:border-x-0 col-span-1 p-3!">
             <Linkedin />
@@ -38,12 +40,9 @@ export default function NavBar() {
           <span className="row-span-1 border-[0.5] border-white lg:border-x-0 col-span-1 p-3!">
             <Instagram />
           </span>
-          <span className="row-span-1 lg:hidden border-[0.5] border-white lg:border-x-0 col-span-1 p-3!">
-            <Menu />
-          </span>
+          <NavMenu />
         </div>
       </div>
-      .
     </nav>
   );
 }

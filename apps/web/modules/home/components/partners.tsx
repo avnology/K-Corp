@@ -41,7 +41,7 @@ export default function Partners() {
   const mobileSlides = groupPartnersIntoSlides(partners, 3);
 
   return (
-    <section className="w-full max-lg:px-5! px-4! bg-[#002569]">
+    <section className="w-full max-lg:px-5! px-4! bg-primary">
       <div className="py-24! container mx-auto!">
         <h2
           className="text-white w-fit font-light md:text-[50px] text-[35px] lg:text-[60px] leading-[48.8px] mb-4!"
@@ -60,9 +60,9 @@ export default function Partners() {
             fontWeight: 300,
           }}
         >
-          We don&apos;t move alone. Our growth is powered by strategic partnerships
-          with those who share our vision and ambition. Together, we create
-          lasting value and real market impact.
+          We don&apos;t move alone. Our growth is powered by strategic
+          partnerships with those who share our vision and ambition. Together,
+          we create lasting value and real market impact.
         </p>
 
         <div className="w-full hidden md:block">
