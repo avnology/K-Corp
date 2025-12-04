@@ -6,6 +6,7 @@ import { rotatingLinks } from '../fields/rotatingLinks';
 import { companies } from '../fields/companies';
 import { partners } from '../fields/partners';
 import { contact } from '../fields/contact';
+import { seo } from '../fields/seo';
 
 export const Home: GlobalConfig = {
   slug: 'home',
@@ -21,5 +22,6 @@ export const Home: GlobalConfig = {
     companies,
     partners,
     contact,
+    seo,
   ],
 };

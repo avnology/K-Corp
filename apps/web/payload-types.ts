@@ -410,6 +410,21 @@ export interface Home {
     title: string;
     description: string;
   };
+  /**
+   * Custom metadata for SEO and social sharing.
+   */
+  seo?: {
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    ogTitle?: string | null;
+    ogDescription?: string | null;
+    ogURL?: string | null;
+    ogImage?: (number | null) | Media;
+    ogType?: string | null;
+    canonicalURL?: string | null;
+    keywords?: string | null;
+    robots?: ('index,follow' | 'noindex,follow' | 'index,nofollow' | 'noindex,nofollow') | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -496,6 +511,20 @@ export interface HomeSelect<T extends boolean = true> {
     | {
         title?: T;
         description?: T;
+      };
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogTitle?: T;
+        ogDescription?: T;
+        ogURL?: T;
+        ogImage?: T;
+        ogType?: T;
+        canonicalURL?: T;
+        keywords?: T;
+        robots?: T;
       };
   updatedAt?: T;
   createdAt?: T;
