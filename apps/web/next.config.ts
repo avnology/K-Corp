@@ -1,12 +1,18 @@
 import { withPayload } from "@payloadcms/next/withPayload";
+import { NextConfig } from "next";
 
-/** @type {import('next').NextConfig} */
+const remotePatterns = process.env.NEXT_IMAGE_DOMAINS?.split(',').map((domain) => ({
+  hostname: domain,
+}));
+
 const nextConfig = {
-  // Your Next.js config here
+  images: {
+    remotePatterns,
+  },
   experimental: {
     reactCompiler: false,
   },
-};
+} as NextConfig;
 
 // Make sure you wrap your `nextConfig`
 // with the `withPayload` plugin
