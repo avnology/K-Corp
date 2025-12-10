@@ -9,7 +9,7 @@ export default function ColorSwitcher() {
     html.classList.toggle("dark");
 
     if (html.classList.contains("dark")) {
-      html.style.setProperty("--primary", "#160000");
+      html.style.setProperty("--primary", "#000000");
     } else {
       html.style.setProperty("--primary", "#002569");
     }
