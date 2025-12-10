@@ -29,18 +29,7 @@ export const about: Field = {
       defaultValue: '#contact',
     },
     
-    {
-      name: 'secondaryTitle',
-      type: 'text',
-      required: true,
-      defaultValue: 'SHAPING THE FUTURE WITH PURPOSE',
-    },
-    {
-      name: 'secondaryDescription',
-      type: 'textarea',
-      required: true,
-      defaultValue: 'This text is an example of text...',
-    },
+   
 
     {
       name: 'sections',

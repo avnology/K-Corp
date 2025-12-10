@@ -250,16 +250,7 @@ export default function AboutUs({ data }: AboutUsProps) {
 
         <Separator className="bg-gray-300" />
 
-        <div className="space-y-4 py-10">
-          <h3 className="font-alexandria text-lg md:text-[24px] leading-tight md:leading-[30px] font-light uppercase text-[#4A4A4A]">
-            {data?.secondaryTitle || "SHAPING THE FUTURE WITH PURPOSE"}
-          </h3>
-          
-          <p className="font-alexandria text-base max-w-[650px] md:text-2xl leading-[30px] font-light text-gray-600">
-            {data?.secondaryDescription ||
-              "This text is an example of text that can be replaced in the same space, this text has been generated from the Arabic text generator, where you can generate such text"}
-          </p>
-        </div>
+     
 
         <Separator className="bg-gray-300" />
 
