@@ -31,15 +31,22 @@ export const HomePage = ({ heroData, titleContainerData, aboutData, rotatingLink
         videoUrl={typeof heroData?.video === "object" ? heroData?.video?.url ?? undefined : undefined}
       />
       <TitleContainer title={titleContainerData?.title || "K.Corp A Trusted"} />
-
-      <AboutUs data={aboutData} />
+<section id="about"><AboutUs data={aboutData} /></section>
+      
       <div className="h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16" />
       <RotatingLinks data={rotatingLinksData} />
       <div className="h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16" />
+      <section id="work">
       <Companies data={companiesData} />
+
+      </section>
+
       <Partners data={partnersData} />
       <TitleContainer title={partnersData?.titleContainerAfter || "Contact us"} />
+      <section id="contact">
+
       <ContactUs data={contactData} />
+      </section>
       <Footer />
     </main>
   );
