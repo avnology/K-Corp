@@ -15,7 +15,7 @@ export const about: Field = {
       name: 'mainDescription',
       type: 'textarea',
       required: true,
-      defaultValue: 'K.CORP IS MORE THAN AN INVESTMENT HOLDING...',
+      defaultValue: 'K.CORP IS MORE THAN AN INVESTMENT HOLDING WE BUILD A BUSINESS ECOSYSTEM THAT CREATES VALUE Once established with a vision for long-term sustainability, K Corp Investment and Holding,headquartered in Saudi Arabia, has grown into a diversified group empowering subsidiaries across logistics, energy, facility management, F&B, and urban planning. Through a decentralized model and strategic support, we contribute to Saudi Arabia’s Vision 2030 by enabling businesses that deliver measurable impact.',
     },
     {
       name: 'buttonText',

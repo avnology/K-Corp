@@ -37,13 +37,18 @@ interface AboutUsProps {
   };
 }
 
-const Section: React.FC<SectionProps> = ({ title, description, link, className }) => {
+const Section: React.FC<SectionProps> = ({
+  title,
+  description,
+  link,
+  className,
+}) => {
   return (
     <div className={cn("space-y-4 py-10", className)}>
-      <h3 className="font-alexandria text-lg md:text-[32px] leading-tight md:leading-[39px] font-normal uppercase text-black">
+      <h3 className="font-alexandria text-[30px] md:text-[36px] leading-tight md:leading-[43.9px] font-normal uppercase text-black">
         {title}
       </h3>
-      <p className="font-alexandria max-w-[650px] text-base md:text-2xl leading-[30px] font-light text-gray-600">
+      <p className="font-alexandria max-w-[650px] text-lg md:text-[24px] leading-normal md:leading-[29.3px] font-extralight text-black">
         {description}
       </p>
       {link?.text && link?.url && (
@@ -64,21 +69,26 @@ export default function AboutUs({ data }: AboutUsProps) {
   const defaultSections: SectionData[] = [
     {
       title: "ECONOMIC DIVERSIFICATION",
-      description: "We invest in high-potential non-oil sectors such as clean entertainment energy, and food to support a resilient national economy.",
+      description:
+        "We invest in high-potential non-oil sectors such as logistics, entertainment, energy, and food to support a resilient national economy.",
     },
     {
       title: "SUSTAINABILITY",
-      description: "We promote environmentally friendly initiatives and smart infrastructure solutions across our business ecosystem.",
+      description:
+        "We promote environmentally friendly initiatives and smart infrastructure solutions across our business ecosystem.",
     },
     {
       title: "INNOVATION",
-      description: "Through advanced technologies and creative industries, we drive progress and shape a forward-looking economy",
+      description:
+        "Through advanced technologies and creative industries, we drive progress and shape a forward-looking economy.",
     },
     {
       title: "TALENT EMPOWERMENT",
-      description: "We create job opportunities and invest in developing the skills of the Saudi workforce, building human capital for the future",
+      description:
+        "We create job opportunities and invest in developing the skills of the Saudi workforce, building human capital for the future.",
     },
   ];
+
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -99,7 +109,6 @@ export default function AboutUs({ data }: AboutUsProps) {
         transformOrigin: "right center",
         duration: 0.8,
         opacity: 0,
-
         ease: "power2.inOut",
       },
       {
@@ -108,7 +117,6 @@ export default function AboutUs({ data }: AboutUsProps) {
         transformOrigin: "right center",
         duration: 0.8,
         opacity: 1,
-
         ease: "power2.inOut",
       }
     ).fromTo(
@@ -127,7 +135,6 @@ export default function AboutUs({ data }: AboutUsProps) {
         transformOrigin: "left center",
         duration: 0.8,
         opacity: 1,
-
         ease: "power2.inOut",
       },
       "<"
@@ -225,8 +232,10 @@ export default function AboutUs({ data }: AboutUsProps) {
           <h2 className="font-alexandria text-xl md:text-[32px] leading-tight md:leading-[39px] font-normal uppercase text-black">
             {data?.title || "ABOUT US"}
           </h2>
-          <p className="font-alexandria text-xs max-w-[650px] sm:text-base md:text-[23px] leading-relaxed md:leading-[37px] font-normal capitalize text-gray-900 min-h-[200px] md:min-h-[397px]">
-            {data?.mainDescription || "K.CORP IS MORE THAN AN INVESTMENT HOLDING WE BUILD A BUSINESS ECOSYSTEM THAT CREATES VALUE Once established with a vision for long-term sustainability, K Corp Investment and Holding, headquartered in Saudi Arabia, has grown into a diversified group empowering subsidiaries across logistics, energy, facility management, F&B, and urban planning. Through a decentralized model and strategic support, we contribute to Saudi Arabia's Vision 2030 by enabling businesses that deliver measurable impact."}
+
+          <p className="font-alexandria text-sm max-w-[650px] md:text-[23px] leading-relaxed md:leading-[37px] font-normal capitalize text-[#160000] min-h-[200px] md:min-h-[397px]">
+            {data?.mainDescription ||
+              "K.CORP IS MORE THAN AN INVESTMENT HOLDING WE BUILD A BUSINESS ECOSYSTEM THAT CREATES VALUE Once established with a vision for long-term sustainability, K Corp Investment and Holding, headquartered in Saudi Arabia, has grown into a diversified group empowering subsidiaries across logistics, energy, facility management, F&B, and urban planning. Through a decentralized model and strategic support, we contribute to Saudi Arabia’s Vision 2030 by enabling businesses that deliver measurable impact."}
           </p>
         </div>
 
@@ -242,24 +251,29 @@ export default function AboutUs({ data }: AboutUsProps) {
         <Separator className="bg-gray-300" />
 
         <div className="space-y-4 py-10">
-          <h3 className="font-alexandria text-lg md:text-[32px] leading-tight md:leading-[39px] font-normal uppercase text-black">
+          <h3 className="font-alexandria text-lg md:text-[24px] leading-tight md:leading-[30px] font-light uppercase text-[#4A4A4A]">
             {data?.secondaryTitle || "SHAPING THE FUTURE WITH PURPOSE"}
           </h3>
+          
           <p className="font-alexandria text-base max-w-[650px] md:text-2xl leading-[30px] font-light text-gray-600">
-            {data?.secondaryDescription || "This text is an example of text that can be replaced in the same space, this text has been generated from the Arabic text generator, where you can generate such text"}
+            {data?.secondaryDescription ||
+              "This text is an example of text that can be replaced in the same space, this text has been generated from the Arabic text generator, where you can generate such text"}
           </p>
         </div>
 
         <Separator className="bg-gray-300" />
 
-        {(data?.sections && data.sections.length > 0 ? data.sections : defaultSections).map((section, index) => (
+        {(data?.sections && data.sections.length > 0
+          ? data.sections
+          : defaultSections
+        ).map((section, index) => (
           <React.Fragment key={index}>
             <Section
               title={section.title}
               description={section.description}
               link={section.link}
             />
-            {index < ((data?.sections?.length || defaultSections.length) - 1) && (
+            {index < (data?.sections?.length || defaultSections.length) - 1 && (
               <Separator className="bg-gray-300" />
             )}
           </React.Fragment>
