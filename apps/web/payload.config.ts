@@ -1,5 +1,6 @@
 import sharp from "sharp";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { buildConfig, Plugin } from "payload";
 import { s3Storage } from '@payloadcms/storage-s3';
@@ -44,11 +45,18 @@ export default buildConfig({
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || "",
   // PostgreSQL Database Adapter with Neon
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URI || "",
-    },
-  }),
+  db:
+    process.env.DATABASE_TYPE === 'postgres_serverless'
+      ? vercelPostgresAdapter({
+          pool: {
+            connectionString: process.env.DATABASE_URI || '',
+          },
+        })
+      : postgresAdapter({
+          pool: {
+            connectionString: process.env.DATABASE_URI || '',
+          },
+        }),
   // If you want to resize images, crop, set focal point, etc.
   // make sure to install it and pass it to the config.
   // This is optional - if you don't need to do these things,
