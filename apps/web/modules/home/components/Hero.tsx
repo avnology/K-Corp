@@ -54,6 +54,7 @@ export const Hero = ({
 
       targetIndices.forEach((index, i) => {
         const targetChar = charElements[index];
+        if (!targetChar) return;
 
         gsap.set(targetChar, { transformOrigin: "center center" });
 
@@ -94,7 +95,7 @@ export const Hero = ({
     }, containerRef);
 
     return () => ctx.revert();
-  }, [title]);
+  }, [title, chars]);
 
   return (
     <section 
