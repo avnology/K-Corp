@@ -42,7 +42,7 @@ export default function Footer() {
 
         <div
           dir="ltr"
-          className="mt-[18px] flex items-center text-[10px] leading-6 font-medium text-white min-[400px]:text-[12px] md:text-[14px]"
+          className="mt-[18px] flex gap-4! items-center text-[10px] leading-6 font-medium text-white min-[400px]:text-[12px] md:text-[14px]"
         >
           <span>Ⓒ Designed by</span>
           <Image
