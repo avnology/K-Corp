@@ -366,8 +366,6 @@ export interface Home {
     mainDescription: string;
     buttonText?: string | null;
     buttonLink?: string | null;
-    secondaryTitle: string;
-    secondaryDescription: string;
     sections?:
       | {
           title: string;
@@ -454,8 +452,6 @@ export interface HomeSelect<T extends boolean = true> {
         mainDescription?: T;
         buttonText?: T;
         buttonLink?: T;
-        secondaryTitle?: T;
-        secondaryDescription?: T;
         sections?:
           | T
           | {

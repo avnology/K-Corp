@@ -11,116 +11,136 @@ interface HeroProps {
   videoUrl?: string;
 }
 
-export const Hero = ({ 
+export const Hero = ({
   title = "K.CORP BEYOND INVESTMENT",
-  subtitle = "This text is an example of text that can be replaced in the same space, this text has been generated from the Arabic text generator, where you can generate such text",
+  subtitle = "This text is an example of text that can be replaced in the same space, this text has been generated from the Arabic text generator.",
   buttonText = "Contact Us",
-  videoUrl = "/home/hero.mp4"
+  videoUrl = "/home/hero.mp4",
 }: HeroProps) => {
-  const titleRef = useRef<HTMLHeadingElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
 
+  const chars = title.split("");
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        defaults: {
-          ease: "back.out(1.7)",
-        },
+      const tl = gsap.timeline();
+
+      gsap.set(".char", { autoAlpha: 0, y: 40 });
+      gsap.set([descriptionRef.current, buttonRef.current], { autoAlpha: 0, y: 20 });
+
+      tl.to(".char", {
+        autoAlpha: 1,
+        y: 0,
+        stagger: 0.03,
+        duration: 0.8,
+        ease: "power2.out",
       });
 
-      tl.from(titleRef.current, {
-        scale: 0.3,
-        opacity: 0,
-        rotation: -5,
-        y: 50,
-        duration: 1.2,
-        ease: "elastic.out(1, 0.6)",
-      });
-
-      tl.from(
-        descriptionRef.current,
-        {
-          scale: 0.4,
-          opacity: 0,
-          y: 30,
-          rotation: 3,
-          duration: 1,
-          ease: "back.out(2)",
-        },
-        "-=0.6"
-      );
-
-      tl.from(
-        buttonRef.current,
-        {
-          scale: 0.5,
-          opacity: 0,
-          y: 20,
-          rotation: -3,
-          duration: 0.8,
-          ease: "elastic.out(1, 0.5)",
-        },
-        "-=0.5"
-      );
-
-      const button = buttonRef.current;
-      if (button) {
-        button.addEventListener("mouseenter", () => {
-          gsap.to(button, {
-            scale: 1.1,
-            rotation: 2,
-            duration: 0.3,
-            ease: "power2.out",
-          });
-        });
-
-        button.addEventListener("mouseleave", () => {
-          gsap.to(button, {
-            scale: 1,
-            rotation: 0,
-            duration: 0.3,
-            ease: "power2.out",
-          });
-        });
+      const charElements = gsap.utils.toArray<HTMLElement>(".char");
+      const totalChars = charElements.length;
+      
+      const targetIndices = [0, totalChars - 1];
+      
+      let found = 0;
+      while (found < 2) {
+        const r = Math.floor(Math.random() * (totalChars - 2)) + 1;
+        if (chars[r] !== " " && !targetIndices.includes(r)) {
+          targetIndices.push(r);
+          found++;
+        }
       }
-    });
+
+      targetIndices.forEach((index, i) => {
+        const targetChar = charElements[index];
+
+        gsap.set(targetChar, { transformOrigin: "center center" });
+
+        gsap.to(targetChar, {
+          rotationY: 360, 
+          color: "#002569",
+          textShadow: "0px 0px 15px rgba(0, 37, 105, 0.8)",
+          
+          duration: 3,
+          ease: "power2.inOut",
+          
+          repeat: -1,
+          repeatDelay: Math.random() * 2 + 1,
+          delay: i * 0.5,
+          
+          onRepeat: () => {
+             gsap.to(targetChar, { color: "white", textShadow: "none", duration: 0.5 });
+          }
+        });
+        
+        gsap.to(targetChar, {
+            color: "white",
+            textShadow: "none",
+            duration: 1.5,
+            delay: 1.5,
+            repeat: -1,
+            repeatDelay: (Math.random() * 2 + 1) + 1.5
+        });
+      });
+
+      tl.to([descriptionRef.current, buttonRef.current], {
+        autoAlpha: 1,
+        y: 0,
+        stagger: 0.2,
+        duration: 1,
+      }, "-=0.5");
+
+    }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [title]);
 
   return (
-    <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+    <section 
+      ref={containerRef}
+      className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-black"
+    >
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-50"
       >
         <source src={videoUrl} type="video/mp4" />
-        Your browser does not support the video tag.
       </video>
 
-      <div className="absolute inset-0 bg-black/30 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/60 z-10" />
 
-      <div className="relative z-20 flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 max-w-screen-sm sm:max-w-screen-md md:max-w-screen-lg lg:max-w-screen-xl xl:max-w-[1210px] 2xl:max-w-[1400px] 4xl:max-w-[1800px] mx-auto w-full">
-        <h1
-          ref={titleRef}
-          className="alexandria text-center uppercase font-semibold text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[75px] 2xl:text-[85px] 4xl:text-[100px] leading-tight sm:leading-tight md:leading-tight lg:leading-[39px] xl:leading-[39px] 2xl:leading-[45px] 4xl:leading-[55px]"
+      <div className="relative z-20 flex flex-col items-center justify-center gap-8 px-4 max-w-[1400px] mx-auto w-full">
+        
+        <h1 
+          className="alexandria flex flex-wrap justify-center text-center font-bold text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[85px] leading-tight"
+          style={{ perspective: "800px" }}
         >
-          {title}
+          {chars.map((char, i) => (
+            <span 
+              key={i} 
+              className="char inline-block will-change-transform"
+              style={{ minWidth: char === " " ? "0.3em" : "auto" }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
         </h1>
 
         <p
           ref={descriptionRef}
-          className="alexandria text-center font-light text-white max-w-full sm:max-w-[90%] md:max-w-[85%] lg:max-w-[1000px] xl:max-w-[1210px] 2xl:max-w-[1400px] text-sm sm:text-base md:text-lg lg:text-xl xl:text-[20px] 2xl:text-[22px] 4xl:text-[26px] leading-relaxed sm:leading-relaxed md:leading-[25px] lg:leading-[25px] xl:leading-[25px] 2xl:leading-[28px] 4xl:leading-[32px]"
+          className="alexandria text-center font-light text-white/80 max-w-[90%] md:max-w-[800px] text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed"
         >
           {subtitle}
         </p>
 
         <div ref={buttonRef}>
-          <Button variant="transparent">{buttonText}</Button>
+          <Button variant="transparent" className="px-10 py-6 text-lg border-white/20 backdrop-blur-md hover:bg-white hover:text-black transition-all duration-500 rounded-full">
+            {buttonText}
+          </Button>
         </div>
       </div>
     </section>
